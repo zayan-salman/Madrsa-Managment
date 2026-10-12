@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madrasa Faizan-e-Mustafa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">FM</div>
+        <h2>Faizan-e-Mustafa</h2>
+        <p>Madrasa Management</p>
+      </div>
+
+      <div class="nazim-card">
+        <span>Nazim Sahab</span>
+        <strong>Molana Raees Madani Sahab</strong>
+      </div>
+
+      <nav>
+        <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+        <button class="nav-btn" data-page="students">All Students</button>
+        <button class="nav-btn" data-page="admission">+ Add Student</button>
+        <button class="nav-btn" data-page="attendance">Attendance</button>
+        <button class="nav-btn" data-page="teachers">Qari Sahiban</button>
+      </nav>
+
+      <div class="sidebar-bottom">Bismillah-ir-Rahman-ir-Raheem</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">ASSALAM-O-ALAIKUM</p>
+          <h1 id="page-heading">Dashboard</h1>
+        </div>
+        <div class="today-box">
+          <span>Today's Date</span>
+          <strong id="today-date"></strong>
+        </div>
+      </header>
+
+      <!-- DASHBOARD -->
+      <section class="page active-page" id="dashboard">
+        <div class="welcome">
+          <div>
+            <p class="eyebrow">MADRASA MANAGEMENT SYSTEM</p>
+            <h2>Welcome to Faizan-e-Mustafa</h2>
+            <p>Manage students, classes and daily attendance.</p>
+          </div>
+          <button class="primary-btn" data-goto="admission">+ Register Student</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>Total Students</span>
+            <strong id="total-students">0</strong>
+            <small>Registered students</small>
+          </div>
+          <div class="stat-card">
+            <span>Present Today</span>
+            <strong id="present-count">0</strong>
+            <small>Marked present</small>
+          </div>
+          <div class="stat-card">
+            <span>Absent Today</span>
+            <strong id="absent-count">0</strong>
+            <small>Marked absent</small>
+          </div>
+          <div class="stat-card">
+            <span>On Leave Today</span>
+            <strong id="leave-count">0</strong>
+            <small>Marked on leave</small>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Recently Registered Students</h3>
+              <p>Latest student records</p>
+            </div>
+            <button class="text-btn" data-goto="students">View All</button>
+          </div>
+          <div id="recent-students" class="table-wrap"></div>
+        </div>
+      </section>
+
+      <!-- ALL STUDENTS -->
+      <section class="page" id="students">
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Student Records</h3>
+              <p>Purane aur naye tamam bachon ka record</p>
+            </div>
+            <button class="primary-btn" data-goto="admission">+ Add Student</button>
+          </div>
+
+          <input id="student-search" class="search-input"
+                 type="search" placeholder="Search by student or father name...">
+
+          <div id="students-list" class="table-wrap"></div>
+        </div>
+      </section>
+
+      <!-- ADD STUDENT -->
+      <section class="page" id="admission">
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Student Registration</h3>
+              <p>Purane student ya naye admission ka record yahan add karein.</p>
+            </div>
+          </div>
+
+          <div class="notice">
+            <strong>Purane bachon ke liye:</strong>
+            unki asal maloomat aur purani admission date bhar sakte hain.
+          </div>
+
+          <form id="admission-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="student-name">Student Name *</label>
+                <input id="student-name" name="name" required maxlength="100"
+                       placeholder="Bache ka poora naam">
+              </div>
+
+              <div class="field">
+                <label for="father-name">Father Name *</label>
+                <input id="father-name" name="father" required maxlength="100"
+                       placeholder="Walid ka naam">
+              </div>
+
+              <div class="field">
+                <label for="dob">Date of Birth</label>
+                <input id="dob" name="dob" type="date">
+              </div>
+
+              <div class="field">
+                <label for="admission-date">Admission Date *</label>
+                <input id="admission-date" name="admissionDate" type="date" required>
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="tel" maxlength="25"
+                       placeholder="03XX XXXXXXX">
+              </div>
+
+              <div class="field">
+                <label for="teacher">Qari Sahab / Class *</label>
+                <select id="teacher" name="teacher" required>
+                  <option value="">Class select karein</option>
+                  <option value="Zayan">Qari Zayan</option>
+                  <option value="Asad">Qari Asad</option>
+                  <option value="Usaid">Qari Usaid</option>
+                  <option value="Zohaib">Qari Zohaib</option>
+                </select>
+              </div>
+
+              <div class="field full-width">
+                <label for="address">Home Address</label>
+                <textarea id="address" name="address" rows="2"
+                          placeholder="Bache ka ghar ka pata"></textarea>
+              </div>
+
+              <div class="field">
+                <label for="previous-madrasa">Previous Madrasa</label>
+                <input id="previous-madrasa" name="previousMadrasa"
+                       placeholder="Agar koi ho">
+              </div>
+
+              <div class="field">
+                <label for="student-status">Registration Type</label>
+                <select id="student-status" name="registrationType">
+                  <option value="Existing Student">Already Studying</option>
+                  <option value="New Admission">New Admission</option>
+                </select>
+              </div>
+
+              <div class="field full-width">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" name="notes" rows="3"
+                          placeholder="Mazeed maloomat..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="reset" class="secondary-btn">Clear Form</button>
+              <button type="submit" class="primary-btn">Save Student Record</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ATTENDANCE -->
+      <section class="page" id="attendance">
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Daily Attendance</h3>
+              <p>Tareekh aur Qari Sahab select karke hazri lagayein.</p>
+            </div>
+          </div>
+
+          <div class="attendance-filters">
+            <div class="field">
+              <label for="attendance-date">Attendance Date</label>
+              <input id="attendance-date" type="date">
+            </div>
+            <div class="field">
+              <label for="attendance-teacher">Qari Sahab / Class</label>
+              <select id="attendance-teacher">
+                <option value="All">All Classes</option>
+                <option value="Zayan">Qari Zayan</option>
+                <option value="Asad">Qari Asad</option>
+                <option value="Usaid">Qari Usaid</option>
+                <option value="Zohaib">Qari Zohaib</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="attendance-list" class="table-wrap"></div>
+          <button id="save-attendance" class="primary-btn save-attendance">
+            Save Attendance
+          </button>
+          <p id="attendance-message" class="message" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <!-- QARI SAHIBAN -->
+      <section class="page" id="teachers">
+        <div class="panel-heading teachers-heading">
+          <div>
+            <h3>Qari Sahiban</h3>
+            <p>Class-wise student records</p>
+          </div>
+        </div>
+        <div class="teacher-grid">
+          <button class="teacher-card" data-teacher="Zayan">
+            <span class="teacher-symbol">01</span>
+            <h3>Qari Zayan</h3>
+            <p><strong id="count-Zayan">0</strong> Students</p>
+            <span class="view-class">View Class →</span>
+          </button>
+          <button class="teacher-card" data-teacher="Asad">
+            <span class="teacher-symbol">02</span>
+            <h3>Qari Asad</h3>
+            <p><strong id="count-Asad">0</strong> Students</p>
+            <span class="view-class">View Class →</span>
+          </button>
+          <button class="teacher-card" data-teacher="Usaid">
+            <span class="teacher-symbol">03</span>
+            <h3>Qari Usaid</h3>
+            <p><strong id="count-Usaid">0</strong> Students</p>
+            <span class="view-class">View Class →</span>
+          </button>
+          <button class="teacher-card" data-teacher="Zohaib">
+            <span class="teacher-symbol">04</span>
+            <h3>Qari Zohaib</h3>
+            <p><strong id="count-Zohaib">0</strong> Students</p>
+            <span class="view-class">View Class →</span>
+          </button>
+        </div>
+      </section>
+
+      <footer class="footer">
+        Madrasa Faizan-e-Mustafa · Nazim Sahab: Molana Raees Madani Sahab
+      </footer>
+    </main>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card">
+      <button id="close-modal" class="close-modal" aria-label="Close">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
